@@ -24,7 +24,7 @@ ______
     in order to run all needed packed in one go.
     >CAUTION: The requirement.txt file specifies versions of packages. These packages will be overwritten when being installed outside of the virtualenvironment!
     
-3. Then you need to navigate with your terminal to *problem-based-learning/keyword_paper_miner/python_code/frontend* and run:
+3. Then you need to navigate with your terminal to *paper-miner/src/frontend* and run:
     ```bash
     export FLASK_APP=flask_file.py
     flask run
@@ -50,7 +50,7 @@ Now the application should run on port 5000 on you localhost. Add one of the fol
 <br>
 <br>
 <img style="float='left';"src="https://media2.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif?cid=ecf05e47ac7b6060c2de1312e14d1335097ad1f4cb5db286&amp;rid=giphy.gif" alt="Coding GIF by memecandy" style="width: 480px; height: 480px; left: 0px; top: 0px; opacity: 0;">
-<img src="https://github.com/mainpyp/paper-miner/blob/main/keyword_paper_miner/python_code/frontend/images/thumbnail_logo.png">
+<img src="https://github.com/mainpyp/paper-miner/blob/main/src/frontend/images/thumbnail_logo.png">
 
 
 # Keyword Paper Miner Release Notes
