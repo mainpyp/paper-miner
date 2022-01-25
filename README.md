@@ -5,7 +5,7 @@ This is the text mining repository for the seminar "Problem Based Learning <br>
 (PBL)" in the winter semester of 2020/21.
 Contributors: <br>
 * Adrian Henkel
-* Konstantinos Mitsakis
+* [Konstantinos Mitsakis](https://github.com/Kostismi)
 
 ### Hey thanks for checking out our repository. Down below you will find a small tutorial on how to run our script!
 ______
