@@ -6,7 +6,6 @@ This is the text mining repository for the seminar "Problem Based Learning <br>
 Contributors: <br>
 * Adrian Henkel
 * Konstantinos Mitsakis
-* Yazgi Sert
 
 ### Hey thanks for checking out our repository. Down below you will find a small tutorial on how to run our script!
 ______
