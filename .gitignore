@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# custom ignores
+.DS_Store
+*.log
+*.mov
+*.pdf
+*.pptx
