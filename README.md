@@ -50,7 +50,7 @@ Now the application should run on port 5000 on you localhost. Add one of the fol
 <br>
 <br>
 <img style="float='left';"src="https://media2.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif?cid=ecf05e47ac7b6060c2de1312e14d1335097ad1f4cb5db286&amp;rid=giphy.gif" alt="Coding GIF by memecandy" style="width: 480px; height: 480px; left: 0px; top: 0px; opacity: 0;">
-![logo](https://github.com/mainpyp/paper-miner/blob/main/keyword_paper_miner/python_code/frontend/images/thumbnail_logo.png)
+<img src="https://github.com/mainpyp/paper-miner/blob/main/keyword_paper_miner/python_code/frontend/images/thumbnail_logo.png">
 
 
 # Keyword Paper Miner Release Notes
