@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1 class="header">Results</h1>
+    <div class="results-body">
+        {% if papers %}
+            {% for keyword, keyword_papers in papers.items() %}
+                {% if keyword_papers|length %}
+                    {% for paper in keyword_papers %}
+                        <div class="paper">
+                            <h2>{{ paper.title }}</h2><h3>Keyword: <i>{{ keyword }}</i></h3>
+                            {% if paper.score %}
+                                <h4>K-Score: {{ paper.score }}</h4>
+                            {% endif %}
+                            <h4>The main author of this paper is <i> {{ paper.author }} </i> and it was cited <i> {{ paper.citations }} </i> times. <br>
+                            The paper was published in {{ paper.published }} </h4>
+                            {% if paper.co_authors %}
+                                Coauthors:  {% set coauthors = paper.co_authors.split(';') %}
+                                            {% for coauthor in coauthors %}
+                                                <ul class="coauthors">
+                                                    <li>{{ coauthor }}</li>
+                                                </ul>
+                                            {% endfor %}
+                            {% endif %}
+                            <h5>If you are interested in reading this paper, follow the link below:</h5>
+                             {% if paper.website %}
+                                {% if paper.is_pdf %}
+                                    <h5 class="paper-link"><a href={{ paper.paper_url }} target="_blank">
+                                        <i class="fas fa-link"></i> Link to the paper ({{ paper.website }}).
+                                        <i class="far fa-file-pdf"></i></a> </h5>
+                                {% else %}
+                                    <h5 class="paper-link"><a href={{ paper.paper_url }} target="_blank">
+                                        <i class="fas fa-link"></i> Link to the paper ({{ paper.website }}).</a> </h5>
+                                {% endif %}
+                             {% else %}
+
+                                {% if paper.is_pdf %}
+                                     <h5 class="paper-link"><a href={{ paper.paper_url }} target="_blank"><i class="fas fa-link"></i> Link to the paper.
+                                     <i class="far fa-file-pdf"></i></a> </h5>
+                                {% else %}
+                                     <h5 class="paper-link"><a href={{ paper.paper_url }} target="_blank"><i class="fas fa-link"></i> Link to the paper.</a> </h5>
+                                {% endif %}
+                            {% endif %}
+
+
+                            <h4>Found snippet:</h4>
+                            <div class="abstract">
+                                <p>
+                                    {{ paper.abstract }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                <div class="paper">
+                    <p>
+                        No suiting paper was found for keyword {{ keyword }}
+                    </p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <h3>There are no results</h3>
+        {% endif %}
+    </div>
+{% endblock body %}

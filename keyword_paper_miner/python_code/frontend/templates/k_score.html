@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1 class="header">K-Score</h1>
+<div id="k_score_total">
+    <p>
+    <p id="intro_k">The K-Score (also known as Kostis Score) is a weighted evaluation measure that we propose for this work.</p>
+        The K-Score can be calculated using 3 preferences / categories / weights by which you want to rate your paper.
+        At the end an overall score is created by taking all three categories into account.
+        <br> <b> Depending on the chosen preferences, an extra weight is added to one of the categories.</b>
+    </p>
+
+    <p>
+        <u id="category_header">The three categories that can be chosen:</u>
+    </p>
+    <table>
+    <tbody>
+      <tr>
+        <td><b>Year:&nbsp;&nbsp;</b></td>
+        <td>The year the paper was published.</td>
+      </tr>
+      <tr>
+        <td><b>Citations:&nbsp;&nbsp;</b></td>
+        <td>The amount of citations for the paper.&nbsp;&nbsp;</td>
+      </tr>
+      <tr>
+        <td><b>Author:&nbsp;&nbsp;</b></td>
+        <td>The score produced by information about the authors themselves. (h-indeces / i10-indeces , etc)</td>
+      </tr>
+    </tbody>
+    </table>
+
+    <p>
+        <i>Especially for the author, the K-score will first authenticate the authors to make sure the right score is
+          calculated. This can be quite time consuming for very popular names (J. Jones, A. Smith). However, this is
+          an important step to get the real authors of the paper. The current version does not provide a way to get all the
+          authors information just by the unique author_id. </i>
+    </p>
+
+    <i>
+        <b>The extra weight we add by preference,is not an absolute way to categorise papers!!</b>
+    </i>
+
+    <p>
+        If someone is interested in rating the papers on citations alone, instead of the K-score the interested party
+        should rank the papers by the(rate by) citations function, which is also provided in our tool. If someone is
+        interested in the citations of the paper but <b> also wants to consider other relevant information (year, author)</b>
+        then the K-score is what you should use.
+    </p>
+
+    <div class="note_k">
+        Note 1: The K-score is still in the first stage of development and need further testing tuning.
+        It is important to note that just because the preference is set to a category, that doesn't mean that the highest
+        score paper will be the highest in the chosen category! (see example)
+    </div>
+
+    <div class="note_k">
+        Note 2: If an author of a paper doesn't have an author_id, the verification of this author will not be completed
+        thus they will not count in the author score even the author might be relevant.
+    </div>
+
+    <div class="note_k">
+        Note 3: The score itself is infirm to extreme highs or extreme lows (years, citations, author indexes).There are
+        functions inside the code to partially deal with those. A paper with > 5000 citations is always going to have
+        a very high score regardless of the year of publication or the authors.
+    </div>
+
+    <div class="note_k">
+        Note 4: The process of getting the papers from Google Scholar, already has a rating system and it provides us
+        the most relevant papers in Google scholar depending on the scholarly system. The K-score is just an extra
+        rating which allows for greater variance and customisation of the already picked out paper (by Google Scholar).
+    </div>
+    <p>
+        <small>
+            For further question please contact:
+            <a id="link_to_about" href="/about">Konstantinos Mitsakis: ge72paj@mytum.de</a>
+        </small>
+    </p>
+</div>
+<div id="k_score_example">
+    <h3>
+         An example - try it yourself:
+    </h3>
+
+    <div id="example_setting">
+        Keyword = Greece <br>
+        Amount = 5 <br>
+        K-Score preference = year vs. citation vs. author
+    </div>
+
+    <p class="example_pref">
+        <b class="pref_header">Year<br></b>
+        When running the algorithm with the K-Score preference "year", we can see the paper <cite>History of Greece</cite>
+        (score 1288) which was published in 1856 with 482 citations. Even if it has more citations as other found papers,
+        it was ranked last, since we rate for year.
+    </p>
+    <p class="example_pref">
+        <b class="pref_header">Citations<br></b>
+        If we now take the same example with the K-Score preference "citations", we see that the previous last ranked
+        paper is now ranked 3rd, with a score of 1514. This is because it has over double the citations of the last two.
+    </p>
+
+   <p class="example_pref">
+        <b class="pref_header">Author<br></b>
+        Now we take the same example with the K-Score preference "author" and we see that the 1856 paper is now ranked
+        4th, with a score of 1446. This is because it has over double the citations of the last paper but was published
+        almost 150 years earlier. This shows that the K-Score is taking all the factors into account even when
+        choosing a preference. <br>
+        For this example the K-Scores of the found papers / books are very low. This is because all of the authors
+        have no a Google Scholar ID. When searching for more relevant topics (without wanting to insult to anyone)
+        the authors will, most probably, have an ID and thus the score will be much higher.
+        (Keyword Protein: 1st paper has a score of 13235)
+    </p>
+
+    <div class="note_k">
+        This example based on the paper information gained on JAN 07 2021
+    </div>
+</div>
+{% endblock body %}

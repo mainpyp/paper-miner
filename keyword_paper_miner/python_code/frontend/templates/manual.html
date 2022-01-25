@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="manual-section">
+      <h1 class="header">Manual</h1>
+        <div id="manual-steps">
+          <ol>
+              <li>First add your Keywords, multiple keywords have to be ";" seperated (CSV).</li>
+              <li>Then please select from which website the paper shall be fetched.</li>
+              <ul>
+                  <li>Google scholar: Keyword Paper Miner is optimised for this selection but the abstract of the fetched papers is not complete.</li>
+                  <li>PubMed: The evaluation measures are not working for this selection. You can choose PubMed you are interested in the whole abstract.</li>
+              </ul>
+              <li>Then you can choose which parameter matters the most for you:</li>
+              <ul>
+                  <li>K-Score: This is explained in detail further below. <br>
+                      <p class="note">NOTE: The calculation of the K-Score is a bit more time consuming than the other evaluation measures.</p></li>
+                  <li>Citations: This ranks the paper by citations.</li>
+                  <li>Year: This ranks the papers by the publishing year.</li>
+              </ul>
+              <li>Next you can specify which of the provided factors shall be weighted when calculating
+              the K-Score. This is  as well explained in detail further down.</li>
+              <li>Then choose how many papers should be returned for each keyword. <br>
+              <p class="note"> NOTE: The more paper you want, the slower longer the application takes to execute. <br>
+              When choosing the K-Score as your Scoring System, you can estimate the running time by multiplying
+                  the expected amount by 1.5 seconds. Example: For 2 keywords each 100 papers:
+                  (2 * 100 * 1) / 60sec = 3.3 min </p></li>
+              <li>When you have searched for the keywords, you can switch between the different pages without
+              deleting your results.</li>
+          </ol>
+        </div>
+    <div class="manual-video">
+        <iframe width="60%" height="450ex" src="https://www.youtube.com/embed/1_AxNVIkpa8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+
+    </div>
+{% endblock body %}

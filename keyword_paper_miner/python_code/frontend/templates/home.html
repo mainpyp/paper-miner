@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1 class="header">Keyword paper miner</h1>
+    <div class="settings-sections">
+        <form method="POST" action="">
+            <!--- For the secret key --->
+            {{ form.hidden_tag() }}
+            <div class="keywords">
+                {{ form.keywords.label(class_="form_label") }}
+                <br>
+                {{ form.keywords(placeholder="Please enter your keywords separated by a semicolon (;)", autocomplete="off") }}
+            </div>
+
+            <div class="website">
+                {{ form.website.label(class_="form_label") }}
+                <br>
+                {{ form.website }}
+            </div>
+
+             <div class="rating">
+                 {{ form.rating.label(class_="form_label") }}
+                <br>
+                {{ form.rating }}
+            </div>
+
+             <div class="preferences">
+                 {{ form.preferences.label(class_="form_label") }}
+                <br>
+                {{ form.preferences }}
+            </div>
+
+            <div class="amount">
+                {{ form.output_amount.label(class_="form_label") }}
+                <br>
+                {{ form.output_amount }}
+            </div>
+
+            <div class="search">
+                {{ form.search }}
+            </div>
+            {% if time %}
+            Estimated time: {{ time }}
+            {% endif %}
+        </form>
+        <button type="button" id="MyButt" onclick="calculateTime()">Estimate runtime</button>
+    </div>
+    <script>
+        function calculateTime() {
+            let keywords = document.getElementById("keywords").value;
+
+            if(keywords.length == 0) {
+                alert("Please enter a keyword");
+                return;
+            }
+
+            let website = document.getElementById("website");
+            let scoring = document.getElementById("rating");
+            let amount = document.getElementById("output_amount");
+
+            let numberOfKeywords = keywords.split(";").length;
+            let stringScoring = scoring.options[scoring.selectedIndex].value;
+            var amountValue = parseInt(amount.options[amount.selectedIndex].value);
+
+            var message;
+            var time;
+            if(stringScoring=="K-Score"){
+                message = "You selected the K-Score!\n"
+                time = 2 * amountValue * numberOfKeywords;
+                if (time > 60 ){
+                    time = (time / 60).toFixed(2);
+                    message += "You query will take around " + time + " minutes";
+                    alert(message)
+                } else {
+                    time = Math.ceil(time);
+                    message = message += "You query will take around " + time + " seconds";
+                    alert(message);
+                }
+            } else if (stringScoring=="Citations") {
+                message = "You rate for citations!\n"
+                time = 0.2 * amountValue * numberOfKeywords;
+                if (time > 60 ){
+                    time = (time / 60).toFixed(2);
+                    message += "You query will take around " + time + " minutes";
+                    alert(message)
+                } else {
+                    time = Math.ceil(time);
+                    message = message += "You query will take around " + time + " seconds";
+                    alert(message);
+                }
+            } else if (stringScoring=="Year") {
+                message = "You rate for year!\n"
+                time = 0.2 * amountValue * numberOfKeywords;
+                if (time > 60 ){
+                    time = (time / 60).toFixed(2);
+                    message += "You query will take around " + time + " minutes";
+                    alert(message)
+                } else {
+                    time = Math.ceil(time);
+                    message = message += "You query will take around " + time + " seconds";
+                    alert(message);
+                }
+            } else {
+                message = "You did not select a Rating method!\n"
+                time = 0.2 * amountValue * numberOfKeywords;
+                if (time > 60) {
+                    time = (time / 60).toFixed(2);
+                    message += "You query will take around " + time + " minutes";
+                    alert(message)
+                } else {
+                    time = Math.ceil(time);
+                    message = message += "You query will take around " + time + " seconds";
+                    alert(message);
+                }
+            }
+        }
+    </script>
+{% endblock body %}
